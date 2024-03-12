@@ -1,0 +1,38 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Dependencies
+node_modules/
+
+# JetBrains IDEs
+.idea/
+.hbuilderx/
+.project/
+.settings/
+.vscode/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Misc
+.DS_Store
+
+# Transpiled files
+build/
+
+# .env you know
+.env
+
+# .vscode
+.vscode/
+
+# .swc
+.swc/
+
+# dist
+dist/
