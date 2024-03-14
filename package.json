@@ -51,9 +51,9 @@
     "bundle": "unbuild"
   },
   "dependencies": {
+    "@videojs/http-streaming": "^3.10.0",
     "video.js": "^8.10.0",
-    "videojs-contrib-ads": "^7.4.0",
-    "videojs-contrib-hls": "^5.15.0"
+    "videojs-contrib-ads": "^7.4.0"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.3",
