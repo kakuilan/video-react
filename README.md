@@ -22,3 +22,7 @@ Video.js component for React
             type: 'application/x-mpegURL',
         }
 ```
+
+### version
+
+- v1.0.0
