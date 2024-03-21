@@ -1,7 +1,7 @@
 {
   "name": "@kakuilan/video-react",
   "type": "module",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "kakuilan",
   "license": "Apache-2.0",
   "description": "Video.js component for React",

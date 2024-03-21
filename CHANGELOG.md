@@ -1,3 +1,9 @@
+## [1.0.2](https://github.com/kakuilan/video-react/compare/v1.0.1...v1.0.2) (2024-03-21)
+
+### Bug Fixes
+
+- 添加类型 ([eab228b](https://github.com/kakuilan/video-react/commit/eab228b3ec70292091bf4474c7616e2e689deb5f))
+
 ## [1.0.1](https://github.com/kakuilan/video-react/compare/v1.0.0...v1.0.1) (2024-03-16)
 
 ### Bug Fixes
