@@ -1,5 +1,5 @@
-import React, { HTMLProps, ReactNode } from 'react';
 import type { VideoJsPlayerOptions } from '@types/video.js';
+import React, { HTMLProps, ReactNode } from 'react';
 
 export type VideoProps = {
   children?: React.ReactNode;

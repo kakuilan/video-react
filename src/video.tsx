@@ -9,7 +9,10 @@ import React, {
     MutableRefObject,
 } from "react";
 import {dequal} from "dequal";
-import { cloneDeep } from 'lodash';
+import {cloneDeep} from 'lodash';
+import videojs from "video.js";
+import type {VideoJsPlayer} from '@types/video.js';
+import type {WrapperParameters} from './type.js';
 
 /**
  * @param value the value to be memoized (usually a dependency list)
@@ -26,3 +29,78 @@ function useDeepCompareMemoize<T>(value: T): T {
 
     return useMemo(() => ref.current, [signalRef.current]);
 }
+
+const VideoJsWrapper = forwardRef<VideoJsPlayer, WrapperParameters>(
+    (
+        {children, videoJsOptions, onReady, onDispose, classNames, ...props},
+        playerRef
+    ) => {
+        const player = playerRef as MutableRefObject<VideoJsPlayer | null>;
+        // video.js sometimes mutates the provided options object.
+        // We clone it to avoid mutation issues.
+        const videoJsOptionsCloned = cloneDeep(videoJsOptions);
+        const videoNode = useRef<HTMLVideoElement | null>(null);
+        const containerRef = useRef<HTMLDivElement | null>(null);
+
+        useEffect(() => {
+            if (!videoNode.current?.parentNode) return;
+
+            // Once we initialize the player, videojs will start mutating the DOM.
+            // We need a snapshot of the state just before, so we know what state
+            // to reset the DOM to.
+            const originalVideoNodeParent =
+                videoNode.current.parentNode.cloneNode(true);
+
+            if (!player.current) {
+                player.current = videojs(videoNode.current, videoJsOptionsCloned);
+                player.current.ready(() => {
+                    onReady();
+                });
+            }
+
+            return (): void => {
+                // Whenever something changes in the options object, we
+                // want to reinitialize video.js, and destroy the old player by calling `player.current.dispose()`
+
+                if (player.current) {
+                    player.current.dispose();
+
+                    // Unfortunately, video.js heavily mutates the DOM in a way that React doesn't
+                    // like, so we need to readd the removed DOM elements directly after dispose.
+                    // More concretely, the node marked with `data-vjs-player` will be removed from the
+                    // DOM. We are readding the cloned original video node parent as it was when React first rendered it,
+                    // so it is once again synchronized with React.
+                    if (
+                        containerRef.current &&
+                        videoNode.current?.parentNode &&
+                        !containerRef.current.contains(videoNode.current.parentNode)
+                    ) {
+                        containerRef.current.appendChild(originalVideoNodeParent);
+                        videoNode.current =
+                            originalVideoNodeParent.firstChild as HTMLVideoElement;
+                    }
+
+                    player.current = null;
+                    onDispose();
+                }
+            };
+
+            // We'll use the serialized videoJsOptions object as a dependency object
+        }, [useDeepCompareMemoize(videoJsOptions)]);
+
+        return (
+            // TODO: can we get by withour introducing an extra div?
+            <div ref={containerRef}>
+                <div data-vjs-player>
+                    <video
+                        ref={videoNode}
+                        className={`video-js ${classNames}`}
+                        {...props}
+                    >
+                        {children}
+                    </video>
+                </div>
+            </div>
+        );
+    }
+);
