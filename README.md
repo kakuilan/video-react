@@ -1,6 +1,6 @@
 # video-react
 
-Video.js component for React
+[Video.js](https://videojs.com/guides/react/) component for React
 
 ### 测试视频
 

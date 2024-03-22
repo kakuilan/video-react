@@ -43,17 +43,19 @@ const VideoJsWrapper = forwardRef<VideoJsPlayer, WrapperParameters>(
         const containerRef = useRef<HTMLDivElement | null>(null);
 
         useEffect(() => {
-            if (!videoNode.current?.parentNode) return;
+            if (!videoNode?.current?.parentNode) {
+                return;
+            }
 
             // Once we initialize the player, videojs will start mutating the DOM.
             // We need a snapshot of the state just before, so we know what state
             // to reset the DOM to.
             const originalVideoNodeParent =
-                videoNode.current.parentNode.cloneNode(true);
+                videoNode.current?.parentNode.cloneNode(true);
 
             if (!player.current) {
                 player.current = videojs(videoNode.current, videoJsOptionsCloned);
-                player.current.ready(() => {
+                player.current?.ready(() => {
                     onReady();
                 });
             }
@@ -63,7 +65,7 @@ const VideoJsWrapper = forwardRef<VideoJsPlayer, WrapperParameters>(
                 // want to reinitialize video.js, and destroy the old player by calling `player.current.dispose()`
 
                 if (player.current) {
-                    player.current.dispose();
+                    player.current?.dispose();
 
                     // Unfortunately, video.js heavily mutates the DOM in a way that React doesn't
                     // like, so we need to readd the removed DOM elements directly after dispose.
@@ -73,9 +75,9 @@ const VideoJsWrapper = forwardRef<VideoJsPlayer, WrapperParameters>(
                     if (
                         containerRef.current &&
                         videoNode.current?.parentNode &&
-                        !containerRef.current.contains(videoNode.current.parentNode)
+                        !containerRef.current?.contains(videoNode.current?.parentNode)
                     ) {
-                        containerRef.current.appendChild(originalVideoNodeParent);
+                        containerRef.current?.appendChild(originalVideoNodeParent);
                         videoNode.current =
                             originalVideoNodeParent.firstChild as HTMLVideoElement;
                     }
@@ -91,7 +93,7 @@ const VideoJsWrapper = forwardRef<VideoJsPlayer, WrapperParameters>(
         return (
             // TODO: can we get by withour introducing an extra div?
             <div ref={containerRef}>
-                <div data-vjs-player>
+                <div data-vjs-player={true}>
                     <video
                         ref={videoNode}
                         className={`video-js ${classNames}`}
