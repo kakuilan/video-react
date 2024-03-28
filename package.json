@@ -55,12 +55,8 @@
     "bundle": "unbuild"
   },
   "dependencies": {
-    "@types/video.js": "^7.3.57",
-    "@videojs/http-streaming": "^3.10.0",
     "dequal": "^2.0.3",
-    "lodash": "^4.17.21",
-    "video.js": "^8.10.0",
-    "videojs-contrib-ads": "^7.4.0"
+    "lodash.clonedeep": "^4.5.0"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.3",
@@ -73,10 +69,11 @@
     "@swc/core": "1.4.6",
     "@swc/jest": "0.2.36",
     "@types/jest": "29.5.12",
-    "@types/lodash": "^4.17.0",
+    "@types/lodash.clonedeep": "^4.5.9",
     "@types/node": "20.11.26",
     "@types/react": "^18.2.65",
     "@types/react-dom": "^18.2.21",
+    "@types/video.js": "^7.3.57",
     "@typescript-eslint/eslint-plugin": "7.2.0",
     "@typescript-eslint/parser": "7.2.0",
     "eslint": "8.57.0",
@@ -101,5 +98,10 @@
   },
   "resolutions": {
     "wrap-ansi": "7.0.0"
+  },
+  "peerDependencies": {
+    "@videojs/http-streaming": "^3.10.0",
+    "video.js": "^8.10.0",
+    "videojs-contrib-ads": "^7.5.0"
   }
 }

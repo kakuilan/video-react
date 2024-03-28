@@ -10,8 +10,7 @@ import React, {
 } from "react";
 import {dequal} from "dequal";
 import {cloneDeep} from 'lodash';
-import videojs from "video.js";
-import type {VideoJsPlayer} from '@types/video.js';
+import videojs, {VideoJsPlayer} from "video.js";
 import type {WrapperParameters} from './type.js';
 
 /**
@@ -51,10 +50,10 @@ const VideoJsWrapper = forwardRef<VideoJsPlayer, WrapperParameters>(
             // We need a snapshot of the state just before, so we know what state
             // to reset the DOM to.
             const originalVideoNodeParent =
-                videoNode.current?.parentNode.cloneNode(true);
+                videoNode?.current?.parentNode.cloneNode(true);
 
-            if (!player.current) {
-                player.current = videojs(videoNode.current, videoJsOptionsCloned);
+            if (!player.current && videoNode.current) {
+                player.current = videojs(videoNode.current as Element, videoJsOptionsCloned);
                 player.current?.ready(() => {
                     onReady();
                 });
@@ -64,8 +63,8 @@ const VideoJsWrapper = forwardRef<VideoJsPlayer, WrapperParameters>(
                 // Whenever something changes in the options object, we
                 // want to reinitialize video.js, and destroy the old player by calling `player.current.dispose()`
 
-                if (player.current) {
-                    player.current?.dispose();
+                if (!!player.current) {
+                    (player.current as VideoJsPlayer).dispose();
 
                     // Unfortunately, video.js heavily mutates the DOM in a way that React doesn't
                     // like, so we need to readd the removed DOM elements directly after dispose.
@@ -75,11 +74,10 @@ const VideoJsWrapper = forwardRef<VideoJsPlayer, WrapperParameters>(
                     if (
                         containerRef.current &&
                         videoNode.current?.parentNode &&
-                        !containerRef.current?.contains(videoNode.current?.parentNode)
+                        !(containerRef.current as HTMLDivElement).contains((videoNode.current as HTMLVideoElement).parentNode)
                     ) {
-                        containerRef.current?.appendChild(originalVideoNodeParent);
-                        videoNode.current =
-                            originalVideoNodeParent.firstChild as HTMLVideoElement;
+                        (containerRef.current as HTMLDivElement).appendChild(originalVideoNodeParent);
+                        videoNode.current = originalVideoNodeParent.firstChild as HTMLVideoElement;
                     }
 
                     player.current = null;

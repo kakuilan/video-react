@@ -2,6 +2,16 @@
 
 [Video.js](https://videojs.com/guides/react/) component for React
 
+### 依赖包
+
+使用前,须安装以下的依赖包
+
+```text
+yarn add video.js
+yarn add videojs-contrib-ads
+yarn add @videojs/http-streaming
+```
+
 ### 测试视频
 
 ```text
