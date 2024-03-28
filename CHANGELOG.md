@@ -1,3 +1,9 @@
+## [1.0.3](https://github.com/kakuilan/video-react/compare/v1.0.2...v1.0.3) (2024-03-22)
+
+### Bug Fixes
+
+- video.tsx ([669d418](https://github.com/kakuilan/video-react/commit/669d41898b1c8442fc6a9058b2dee30934494410))
+
 ## [1.0.2](https://github.com/kakuilan/video-react/compare/v1.0.1...v1.0.2) (2024-03-21)
 
 ### Bug Fixes
