@@ -68,6 +68,7 @@
     "@swc/cli": "0.3.10",
     "@swc/core": "1.4.6",
     "@swc/jest": "0.2.36",
+    "@testing-library/react": "^14.2.2",
     "@types/jest": "29.5.12",
     "@types/lodash.clonedeep": "^4.5.9",
     "@types/node": "20.11.26",
