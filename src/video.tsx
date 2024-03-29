@@ -10,8 +10,9 @@ import React, {
 } from "react";
 import {dequal} from "dequal";
 import {cloneDeep} from 'lodash';
-import videojs, {VideoJsPlayer} from "video.js";
-import type {WrapperParameters} from './type.js';
+import videojs, {VideoJsPlayer, VideoJsPlayerOptions} from "video.js";
+import type {VideoType, VideoProps, WrapperParameters} from './type.js';
+
 
 /**
  * @param value the value to be memoized (usually a dependency list)
@@ -104,3 +105,36 @@ const VideoJsWrapper = forwardRef<VideoJsPlayer, WrapperParameters>(
         );
     }
 );
+
+VideoJsWrapper.displayName = "VideoJsWrapper";
+
+export const useVideoJS = (
+    videoJsOptions: VideoJsPlayerOptions,
+    classNames = ""
+): {
+    Video: VideoType;
+    ready: boolean;
+    player: VideoJsPlayer | null;
+} => {
+    const [ready, setReady] = useState(false);
+
+    // player will contain the video.js player object, once it is ready.
+    const player = useRef<VideoJsPlayer | null>(null);
+    const Video = useCallback(
+        ({children, ...props}: VideoProps) => (
+            <VideoJsWrapper
+                videoJsOptions={videoJsOptions}
+                classNames={classNames}
+                onReady={(): void => setReady(true)}
+                onDispose={(): void => setReady(false)}
+                {...props}
+                ref={player}
+            >
+                {children}
+            </VideoJsWrapper>
+        ),
+        [useDeepCompareMemoize(videoJsOptions), classNames]
+    );
+
+    return {Video, ready, player: player.current};
+};
