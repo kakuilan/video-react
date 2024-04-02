@@ -104,7 +104,8 @@
     /* Skip type checking all .d.ts files. */
     "jsx": "react"
   },
-  "include": ["src"],
+  "include": ["src", "build.config.ts"],
+  "exclude": ["src/src/__tests__/*"],
   "ts-node": {
     "swc": true,
     "esm": true,

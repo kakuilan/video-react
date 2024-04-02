@@ -1,12 +1,14 @@
 {
   "jsc": {
     "parser": {
-      "syntax": "typescript"
+      "syntax": "typescript",
+      "jsx": true
     },
     "target": "esnext"
   },
   "module": {
     "type": "es6"
   },
-  "sourceMaps": true
+  "sourceMaps": true,
+  "minify": false
 }

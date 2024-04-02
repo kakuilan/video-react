@@ -10,7 +10,13 @@ module.exports = {
     project: './tsconfig.json',
     tsconfigRootDir: __dirname,
   },
-  plugins: ['@typescript-eslint', 'jest', 'prettier','simple-import-sort','unused-imports'],
+  plugins: [
+    '@typescript-eslint',
+    'jest',
+    'prettier',
+    'simple-import-sort',
+    'unused-imports',
+  ],
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended-requiring-type-checking',

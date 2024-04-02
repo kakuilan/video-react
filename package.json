@@ -6,6 +6,7 @@
   "license": "Apache-2.0",
   "description": "Video.js component for React",
   "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
   "exports": {
     ".": {
       "import": "./dist/index.mjs",
@@ -31,7 +32,8 @@
   "keywords": [
     "video.js",
     "typescript",
-    "react"
+    "react",
+    "hook"
   ],
   "scripts": {
     "prepare": "husky install",
@@ -46,9 +48,9 @@
     "build": "swc ./src -d build",
     "build:watch": "swc ./src -d build -w",
     "lint": "eslint ./src --ext .ts",
-    "lint:fix": "eslint ./src --ext .ts --fix",
-    "prettier": "prettier '**/*.{ts,json,md}'",
-    "prettier:write": "prettier --write '**/*.{ts,json,md}'",
+    "lint:fix": "eslint ./src --ext .ts --ext .tsx --fix && prettier -w '**/*.{ts,tsx,json,md}'",
+    "prettier": "prettier '**/*.{ts,tsx,json,md}'",
+    "prettier:write": "prettier --write '**/*.{ts,tsx,json,md}'",
     "type-check": "tsc --noEmit",
     "lint-staged": "lint-staged",
     "release": "semantic-release",

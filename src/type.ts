@@ -1,8 +1,8 @@
-import React, { HTMLProps, ReactNode } from 'react';
+import { HTMLProps, ReactNode } from 'react';
 import { VideoJsPlayerOptions } from 'video.js';
 
 export type VideoProps = {
-  children?: React.ReactNode;
+  children?: ReactNode;
 } & Partial<HTMLProps<HTMLVideoElement>>;
 
 //视频组件类型
