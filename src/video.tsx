@@ -1,5 +1,5 @@
 import { dequal } from 'dequal';
-import { cloneDeep } from 'lodash';
+import cloneDeep from 'lodash.clonedeep';
 import React, {
   forwardRef,
   MutableRefObject,
