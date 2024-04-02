@@ -1,3 +1,9 @@
+## [1.0.5](https://github.com/kakuilan/video-react/compare/v1.0.4...v1.0.5) (2024-04-02)
+
+### Bug Fixes
+
+- use lodash.clonedeep ([5a7d421](https://github.com/kakuilan/video-react/commit/5a7d42172442fd31347dc2d896b105a109a48893))
+
 ## [1.0.4](https://github.com/kakuilan/video-react/compare/v1.0.3...v1.0.4) (2024-04-02)
 
 ### Bug Fixes
