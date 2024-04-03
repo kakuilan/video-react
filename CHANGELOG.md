@@ -1,3 +1,10 @@
+## [1.0.6](https://github.com/kakuilan/video-react/compare/v1.0.5...v1.0.6) (2024-04-03)
+
+### Bug Fixes
+
+- 优化 ([93b0e06](https://github.com/kakuilan/video-react/commit/93b0e062277852b0cf4216c85a110cbf82218705))
+- 优化 ([39cee6a](https://github.com/kakuilan/video-react/commit/39cee6a86a43499c527889c90aed30d620fbf2c5))
+
 ## [1.0.5](https://github.com/kakuilan/video-react/compare/v1.0.4...v1.0.5) (2024-04-02)
 
 ### Bug Fixes
