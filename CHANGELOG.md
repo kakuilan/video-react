@@ -1,3 +1,9 @@
+## [1.0.7](https://github.com/kakuilan/video-react/compare/v1.0.6...v1.0.7) (2024-04-03)
+
+### Bug Fixes
+
+- 格式化时保持类型断言 ([b4fbd72](https://github.com/kakuilan/video-react/commit/b4fbd72337414cebc7b64ea35444f085aebbbf5e))
+
 ## [1.0.6](https://github.com/kakuilan/video-react/compare/v1.0.5...v1.0.6) (2024-04-03)
 
 ### Bug Fixes
