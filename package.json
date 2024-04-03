@@ -48,7 +48,7 @@
     "build": "swc ./src -d build",
     "build:watch": "swc ./src -d build -w",
     "lint": "eslint ./src --ext .ts",
-    "lint:fix": "eslint ./src --ext .ts --ext .tsx --fix && prettier -w '**/*.{ts,tsx,json,md}'",
+    "lint:fix": "eslint ./src --ext .ts --ext .tsx --fix",
     "prettier": "prettier '**/*.{ts,tsx,json,md}'",
     "prettier:write": "prettier --write '**/*.{ts,tsx,json,md}'",
     "type-check": "tsc --noEmit",
