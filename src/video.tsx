@@ -11,7 +11,7 @@ import React, {
 } from 'react';
 import videojs, { VideoJsPlayer, VideoJsPlayerOptions } from 'video.js';
 
-import type { VideoProps, VideoType, WrapperParameters } from './type.js';
+import type { VideoProps, VideoType, WrapperParameters } from './type';
 
 /**
  * @param value the value to be memoized (usually a dependency list)
@@ -67,7 +67,7 @@ const VideoJsWrapper = forwardRef<VideoJsPlayer, WrapperParameters>(
         // want to reinitialize video.js, and destroy the old player by calling `player.current.dispose()`
 
         if (player.current) {
-          player.current.dispose();
+          (player.current).dispose();
 
           // Unfortunately, video.js heavily mutates the DOM in a way that React doesn't
           // like, so we need to readd the removed DOM elements directly after dispose.
@@ -77,9 +77,13 @@ const VideoJsWrapper = forwardRef<VideoJsPlayer, WrapperParameters>(
           if (
             containerRef.current &&
             videoNode.current?.parentNode &&
-            !containerRef.current.contains(videoNode.current.parentNode)
+            !(containerRef.current).contains(
+              (videoNode.current).parentNode,
+            )
           ) {
-            containerRef.current.appendChild(originalVideoNodeParent);
+            (containerRef.current).appendChild(
+              originalVideoNodeParent,
+            );
             videoNode.current =
               originalVideoNodeParent.firstChild as HTMLVideoElement;
           }
