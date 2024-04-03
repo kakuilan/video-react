@@ -24,7 +24,7 @@ module.exports = {
     'prettier',
   ],
   rules: {
-    "@typescript-eslint/no-inferrable-types": "off",
+    "@typescript-eslint/no-unnecessary-type-assertion": "off",
 
     //#region  //*=========== Unused Import ===========
     '@typescript-eslint/no-unused-vars': 'off',
