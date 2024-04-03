@@ -77,9 +77,13 @@ const VideoJsWrapper = forwardRef<VideoJsPlayer, WrapperParameters>(
           if (
             containerRef.current &&
             videoNode.current?.parentNode &&
-            !containerRef.current.contains(videoNode.current.parentNode)
+            !(containerRef.current as HTMLDivElement).contains(
+              (videoNode.current as HTMLVideoElement).parentNode,
+            )
           ) {
-            containerRef.current.appendChild(originalVideoNodeParent);
+            (containerRef.current as HTMLDivElement).appendChild(
+              originalVideoNodeParent,
+            );
             videoNode.current =
               originalVideoNodeParent.firstChild as HTMLVideoElement;
           }
