@@ -8,8 +8,6 @@
 
 ```text
 yarn add video.js
-yarn add videojs-contrib-ads
-yarn add @videojs/http-streaming
 ```
 
 ### 测试视频
@@ -29,6 +27,14 @@ yarn add @videojs/http-streaming
         },
         {
             src: 'https://d2zihajmogu5jn.cloudfront.net/bipbop-advanced/bipbop_16x9_variant.m3u8',
+            type: 'application/x-mpegURL',
+        },
+        {
+            src: 'https://demo.m3u8play.com/m3u8/out/demo.m3u8',
+            type: 'application/x-mpegURL',
+        },
+        {
+            src: 'https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8',
             type: 'application/x-mpegURL',
         }
 ```
