@@ -103,8 +103,6 @@
     "wrap-ansi": "7.0.0"
   },
   "peerDependencies": {
-    "@videojs/http-streaming": "^3.10.0",
-    "video.js": "^8.10.0",
-    "videojs-contrib-ads": "^7.5.0"
+    "video.js": "^8.10.0"
   }
 }
