@@ -1,3 +1,9 @@
+## [1.0.8](https://github.com/kakuilan/video-react/compare/v1.0.7...v1.0.8) (2024-04-15)
+
+### Bug Fixes
+
+- 减少peerDependencies依赖 ([981f967](https://github.com/kakuilan/video-react/commit/981f9672c247f4ea5f4f43b97bc9cd1757acb0ee))
+
 ## [1.0.7](https://github.com/kakuilan/video-react/compare/v1.0.6...v1.0.7) (2024-04-03)
 
 ### Bug Fixes
