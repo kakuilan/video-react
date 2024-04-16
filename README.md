@@ -41,4 +41,4 @@ yarn add video.js
 
 ### version
 
-- v1.0.7
+- v1.0.9
